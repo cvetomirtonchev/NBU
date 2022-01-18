@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col overflow-auto">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Book number</th>
+          <th scope="col">Book name</th>
+          <th scope="col">Student name</th>
+          <th scope="col">Start date</th>
+          <th scope="col">End date</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rowData of tableData">
+          <td>{{ rowData.bookId }}</td>
+          <td>{{ rowData.bookTitle }}</td>
+          <th>{{ rowData.firstName }}</th>
+          <td>{{ rowData.borrowedFrom ? rowData.borrowedFrom : "-" }}</td>
+          <td>{{ rowData.borrowedTo ? rowData.borrowedTo : "-" }}</td>
+          <!-- <td>
+                        <i class="fas fa-check-circle text-success" *ngIf="rowData.isApproved"></i>
+                        <i class="fas fa-minus-circle text-danger" *ngIf="!rowData.isApproved"></i>
+                    </td> -->
+          <td>
+            <button
+              class="btn btn-outline-primary btn-sm mb-0 mr-1 border-transparent btn-sm"
+              (click)="approveRequest(rowData)"
+              ngbTooltip="marquer le retour"
+              container="body"
+              triggers="hover"
+            >
+              <i class="fas fa-pencil-alt"></i>
+              <!-- <i class="fas fa-check"></i> -->
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row text-center" *ngIf="tableData.length === 0">
+      <div class="col">No data available!</div>
+    </div>
+  </div>
+</div>

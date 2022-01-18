@@ -1,0 +1,46 @@
+<app-loader [loading]="loading"></app-loader>
+<div class="row">
+  <div class="col overflow-auto">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Book number</th>
+          <th scope="col">Book name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Language</th>
+          <th scope="col">Issue year</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rowData of tableData">
+          <th scope="row">{{ rowData.id }}</th>
+          <td>{{ rowData.bookTitle }}</td>
+          <td>{{ rowData.categoryName }}</td>
+          <td>{{ rowData.language }}</td>
+          <td>{{ rowData.publicationYear }}</td>
+          <td>
+            <button
+              class="btn btn-outline-primary btn-sm mb-0 mr-1 border-transparent btn-sm"
+              (click)="reserveBook(rowData)"
+              [disabled]="requestedBooks > 1"
+              [ngbTooltip]="
+                requestedBooks > 1
+                  ? 'Limite de 2 livres demandés'
+                  : 'Réserver un livre'
+              "
+              container="body"
+              triggers="hover"
+            >
+              <i class="fas fa-bookmark"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row text-center" *ngIf="tableData.length === 0">
+      <div class="col">No data!</div>
+    </div>
+    <span class="float-right"> Livres demandés: {{ requestedBooks }}/2 </span>
+  </div>
+</div>

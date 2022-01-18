@@ -1,0 +1,75 @@
+<header id="header" class="fixed-top">
+  <!--header-transparent-->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-11 d-flex align-items-center">
+        <h1 class="logo mr-auto"><a href="index.html"> Library NBU </a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav class="nav-menu d-lg-block">
+          <!--d-none-->
+          <ul>
+            <li
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a routerLink="/"> Home </a>
+            </li>
+            <li
+              *ngIf="user"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a *ngIf="user.userType === 1" [routerLink]="['/users']">
+                Users
+              </a>
+            </li>
+            <li
+              *ngIf="user"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a routerLink="/library"> Library </a>
+            </li>
+            <li *ngIf="user" class="nav-item" ngbDropdown>
+              <a class="position-relative" id="userDropdown" ngbDropdownToggle>
+                <i class="fas fa-user"></i>
+              </a>
+              <div
+                ngbDropdownMenu
+                aria-labelledby="userDropdown"
+                class="text-left background-navbar"
+              >
+                <h6 class="dropdown-header font-weight-bold">
+                  {{ user.userName }}
+                </h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-1" routerLink="/account/profile">
+                  <i class="ft-settings mr-2"></i>
+                  <span>Profile</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" (click)="logout()">
+                  <i class="fas fa-sign-out-alt mr-2"></i>
+                  <span>Log out</span>
+                </a>
+              </div>
+            </li>
+            <li *ngIf="!user">
+              <a routerLinkActive="active" routerLink="/account/login">
+                Log in
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- .nav-menu -->
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+  <router-outlet></router-outlet>
+  <app-alert></app-alert>
+</div>

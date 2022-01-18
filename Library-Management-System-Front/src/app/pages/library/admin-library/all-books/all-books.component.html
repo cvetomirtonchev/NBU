@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col">
+    <div class="input-group position-relative has-icon-right">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-search"></i> </span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+        name="enteredText"
+        [(ngModel)]="enteredText"
+        (ngModelChange)="changed($event)"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          *ngIf="enteredText.length"
+          (click)="clear()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col overflow-auto">
+    <table class="table table-striped">
+      <thead>
+        <tr class="">
+          <th scope="col">Number of delivery</th>
+          <th scope="col">Book name</th>
+          <th scope="col">Cathegory</th>
+          <th scope="col">Language</th>
+          <th scope="col">Issue year</th>
+          <th scope="col">Available/Total</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rowData of tableData">
+          <th scope="row">{{ rowData.id }}</th>
+          <td>{{ rowData.bookTitle }}</td>
+          <td>{{ rowData.categoryName }}</td>
+          <td>{{ rowData.language }}</td>
+          <td>{{ rowData.publicationYear }}</td>
+          <td>{{ rowData.freeNoCopies }}/{{ rowData.totalNoCopies }}</td>
+          <td style="display: flex">
+            <button
+              class="btn btn-outline-secondary btn-sm mb-0 mr-1 border-transparent btn-sm"
+              (click)="previewItems(rowData)"
+              ngbTooltip="Revue"
+              container="body"
+              triggers="hover"
+            >
+              <i class="far fa-eye"></i>
+            </button>
+            <button
+              class="btn btn-outline-danger btn-sm mb-0 mr-1 border-transparent btn-sm"
+              (click)="deleteBook(rowData)"
+              ngbTooltip="Supprimer"
+              container="body"
+              triggers="hover"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row text-center" *ngIf="tableData.length === 0">
+      <div class="col">No data available!</div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <button
+      type="submit"
+      class="btn btn-primary mb-2 float-right"
+      (click)="addBookModal()"
+      ngbTooltip="Add a book"
+      container="body"
+    >
+      Add a book
+    </button>
+  </div>
+</div>
+<!-- <button class="btn btn-primary btn-sm mb-0 mr-1 border-transparent btn-sm"
+     triggers="hover">
+    <i class="fas fa-save"></i>
+</button> -->

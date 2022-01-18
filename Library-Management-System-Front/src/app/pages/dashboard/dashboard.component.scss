@@ -1,0 +1,37 @@
+#featured-services {
+    background: #000;
+}
+section {
+    overflow: hidden;
+}
+
+#featured-services .box {
+    padding: 30px 20px;
+}
+
+#featured-services i {
+    color: #4169E1;
+    font-size: 48px;
+    display: inline-block;
+    line-height: 1;
+}
+#featured-services h4 a:hover {
+    color: #4169E1;
+    text-decoration: none!important;
+}
+#featured-services p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    margin-bottom: 0;
+}
+#featured-services h4 a {
+    color: #fff;
+}
+.height-85{
+    height: 85vh;
+}
+
+#featured-services .box-bg {
+    background-image: linear-gradient(0deg, #000000 0%, #242323 35%, #000000 70%);
+}

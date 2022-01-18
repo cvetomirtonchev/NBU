@@ -1,0 +1,49 @@
+<app-loader [loading]="loading"></app-loader>
+<div class="row">
+  <div class="col overflow-auto">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Book number</th>
+          <th scope="col">Student name</th>
+          <th scope="col">Book name</th>
+          <th scope="col">Start date</th>
+          <th scope="col">End date</th>
+          <th scope="col">Return date</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rowData of tableData">
+          <th>{{ rowData.bookId }}</th>
+          <th scope="row">{{ rowData.firstName }}</th>
+          <td>{{ rowData.bookTitle }}</td>
+          <td>{{ rowData.borrowedFrom | date: "dd/MM/yyyy" }}</td>
+          <td>{{ rowData.borrowedTo | date: "dd/MM/yyyy" }}</td>
+          <td>
+            <ng-container *ngIf="rowData.actualReturnDate">
+              {{ rowData.actualReturnDate | date: "dd/MM/yyyy" }}
+            </ng-container>
+            <ng-container *ngIf="!rowData.actualReturnDate">
+              <i class="fas fa-exclamation-circle text-warning"></i>
+            </ng-container>
+          </td>
+          <td>
+            <button
+              class="btn btn-outline-danger btn-sm mb-0 mr-1 border-transparent btn-sm"
+              (click)="deleteRow(rowData)"
+              ngbTooltip="Supprimer l'entrée"
+              container="body"
+              triggers="hover"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row text-center" *ngIf="tableData.length === 0">
+      <div class="col">No data available!</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="modal-header">
+  <h4 class="modal-title">Modifier les détails</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="submitForm()" [formGroup]="formGroup" novalidate>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="FirstName">Prénom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FirstName"
+            formControlName="FirstName"
+            name="FirstName"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="LastName">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="LastName"
+            formControlName="LastName"
+            name="LastName"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="Email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="Email"
+            formControlName="Email"
+            name="Email"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="PhoneNumber">Numéro de téléphone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="PhoneNumber"
+            formControlName="PhoneNumber"
+            name="PhoneNumber"
+            appFormControlDisable
+          />
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row" *ngIf="userInfo.userType === 2">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="FacultyNumber">Numéro de faculté</label>
+                    <input type="text" class="form-control" id="FacultyNumber" formControlName="FacultyNumber"
+                        name="FacultyNumber">
+                </div>
+            </div>
+        </div> -->
+  </form>
+</div>
+<div class="modal-footer">
+  <div class="row" *ngIf="notValid">
+    <div class="text-danger">Tous les champs sont requis!</div>
+  </div>
+  <button class="btn btn-outline-success" (click)="submitForm()">
+    Enregistrer
+  </button>
+</div>

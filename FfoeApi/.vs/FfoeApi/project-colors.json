@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6be1c803-83e3-4a32-9a9f-bbf93f936c17": {
+      "ProjectGuid": "6be1c803-83e3-4a32-9a9f-bbf93f936c17",
+      "DisplayName": "FfoeApi",
+      "ColorIndex": 0
+    },
+    "ae1a84e6-de3a-4052-8b5f-8c893a6b12ca": {
+      "ProjectGuid": "ae1a84e6-de3a-4052-8b5f-8c893a6b12ca",
+      "DisplayName": "FfoeApi.Services",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

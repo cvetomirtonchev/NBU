@@ -1,0 +1,45 @@
+<app-loader [loading]="loading"></app-loader>
+<div class="row">
+  <div class="col overflow-auto">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Book number</th>
+          <th scope="col">Book name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rowData of tableData">
+          <th>{{ rowData.bookId }}</th>
+          <td>{{ rowData.bookTitle }}</td>
+          <td>{{ rowData.categoryName }}</td>
+          <td>
+            <i
+              class="fas fa-question-circle text-warning"
+              ngbTooltip="En attente d'approbation et de soumission par le bibliothécaire"
+              container="body"
+              triggers="hover"
+            ></i>
+          </td>
+          <td>
+            <button
+              class="btn btn-outline-danger btn-sm mb-0 mr-1 border-transparent btn-sm"
+              (click)="deleteRequestedItem(rowData)"
+              ngbTooltip="Refus de livre"
+              container="body"
+              triggers="hover"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row text-center" *ngIf="tableData.length === 0">
+      <div class="col">NO data!</div>
+    </div>
+  </div>
+</div>

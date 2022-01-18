@@ -1,0 +1,96 @@
+#header.header-transparent {
+  background: transparent;
+}
+
+#header.header-scrolled {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 18px 0;
+}
+
+#header {
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 18px 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+#header .logo {
+  font-size: 28px;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: #4169E1;
+  outline: none;
+  text-decoration: none;
+}
+
+#header .logo a {
+  color: #fff;
+}
+
+#header .logo {
+  margin: 0;
+  margin-right: 0px;
+  padding: 0;
+  padding-left: 0px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding-left: 10px;
+  border-left: 4px solid #4169E1;
+}
+
+.nav-menu>ul {
+  display: flex;
+}
+
+.nav-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu>ul>li {
+  position: relative;
+  white-space: nowrap;
+  padding: 10px 0 10px 28px;
+}
+
+.nav-menu a:hover,
+.nav-menu .active>a,
+.nav-menu li:hover>a,
+.nav-menu li:active>a {
+  color: #4169E1;
+  background: transparent !important;
+}
+
+.nav-menu a {
+  display: block;
+  position: relative;
+  color: #fff;
+  transition: 0.3s;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #325d88;
+  border-color: #325d88;
+}
+
+.dropdown-header {
+  color: white;
+}

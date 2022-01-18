@@ -1,0 +1,11 @@
+<!-- <app-loader [loading]="loading"></app-loader> -->
+
+
+<div class="background pt-100"> <!-- style="overflow:scroll"-->
+    <!-- <div class="col"> -->
+    <div class="container bg-white p-3 border-radius-card" *ngIf="user">
+        <app-admin-library *ngIf="user.userType === 1 || user.userType === 3" [user]="user" [active]="active"></app-admin-library>
+        <app-student-library *ngIf="user.userType === 2" [user]="user" [active]="active"></app-student-library>
+    </div>
+    <!-- </div> -->
+</div>

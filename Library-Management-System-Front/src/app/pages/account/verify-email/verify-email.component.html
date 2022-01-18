@@ -1,0 +1,24 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Confirm your email!</h4>
+        
+        <div class="card-body">
+            <!-- Confirmation link is sent to {{user ? user.email : ''}} -->
+            <div class="align-items-center d-flex justify-content-center loading-overlay">
+                <div class="row py-2 font-large-2">
+                    <div class="col-12 text-center">
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            Confirmation link is sent to your email!
+        </div>
+        <button class="btn btn-primary" (click)="sendLink()"> 
+            send link
+          </button>
+    </div>
+</div>

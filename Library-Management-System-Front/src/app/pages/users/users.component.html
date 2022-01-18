@@ -1,0 +1,130 @@
+<div class="background pt-100">
+  <div class="container bg-white p-3 border-radius-card">
+    <div class="row p-2">
+      <div class="col">
+        <nav class="nav nav-pills">
+          <a
+            class="nav-item nav-link"
+            [class.active]="active === 1"
+            (click)="changeTab(1)"
+            >All</a
+          >
+          <a
+            class="nav-item nav-link"
+            [class.active]="active === 2"
+            (click)="changeTab(2)"
+            >Approved</a
+          >
+          <a
+            class="nav-item nav-link"
+            [class.active]="active === 3"
+            (click)="changeTab(3)"
+            >Pending</a
+          >
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="input-group position-relative has-icon-right">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i> </span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            name="enteredText"
+            [(ngModel)]="enteredText"
+            (ngModelChange)="changed($event)"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              *ngIf="enteredText.length"
+              (click)="clear()"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col overflow-auto">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Faculty number</th>
+              <th scope="col">Username</th>
+              <th scope="col">First and last name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone number</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rowData of tableData">
+              <th scope="row">
+                {{
+                  rowData.facultyNumber === 0 || rowData.facultyNumber === null
+                    ? "-"
+                    : rowData.facultyNumber
+                }}
+              </th>
+              <td>{{ rowData.userName }}</td>
+              <td>{{ rowData.firstName }} {{ rowData.lastName }}</td>
+              <td>{{ rowData.email }}</td>
+              <td>{{ rowData.phoneNumber }}</td>
+              <td>
+                {{
+                  rowData.userType === 1
+                    ? "Admin"
+                    : rowData.userType === 2
+                    ? "Utilisateur"
+                    : rowData.userType === 3
+                    ? "Bibliothécaire"
+                    : "-"
+                }}
+              </td>
+              <td>
+                <i
+                  class="fas fa-exclamation-circle text-warning"
+                  *ngIf="rowData.isApproved === 0"
+                  ngbTooltip="En attente"
+                  container="body"
+                ></i>
+                <i
+                  class="fas fa-check-circle text-success"
+                  *ngIf="rowData.isApproved === 1"
+                  ngbTooltip="Actif"
+                  container="body"
+                ></i>
+                <i
+                  class="fas fa-minus-circle text-danger"
+                  *ngIf="rowData.isApproved === 2"
+                  ngbTooltip="Bloqué"
+                  container="body"
+                ></i>
+              </td>
+              <td>
+                <button
+                  class="btn btn-primary btn-sm mb-0 mr-1 border-transparent btn-sm"
+                  (click)="changeRole(rowData)"
+                  ngbTooltip="Éditer"
+                  container="body"
+                  triggers="hover"
+                >
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

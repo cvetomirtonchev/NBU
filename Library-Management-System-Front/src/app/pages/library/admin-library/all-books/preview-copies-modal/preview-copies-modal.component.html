@@ -1,0 +1,113 @@
+<div class="modal-header">
+  <h4 class="modal-title">Book Details</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="input-group position-relative has-icon-right">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i> </span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            name="enteredText"
+            [(ngModel)]="enteredText"
+            (ngModelChange)="changed($event)"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              *ngIf="enteredText.length"
+              (click)="clear()"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Book number</th>
+              <th scope="col">Book name</th>
+              <th scope="col">Issue year</th>
+              <th scope="col">Status</th>
+              <th scope="col">Taken by</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rowData of tableData">
+              <th scope="row" class="text-center">{{ rowData.id }}</th>
+              <td class="text-center">{{ rowData.bookTitle }}</td>
+              <td class="text-center">{{ rowData.publicationYear }}</td>
+              <td class="text-center">
+                <i
+                  class="fas fa-check-circle text-success"
+                  *ngIf="rowData.isAvailable === 1"
+                  ngbTooltip="Disponible"
+                  container="body"
+                ></i>
+                <i
+                  class="fas fa-minus-circle text-warning"
+                  *ngIf="rowData.isAvailable === 2"
+                  ngbTooltip="Occupé"
+                  container="body"
+                ></i>
+                <i
+                  class="fas fa-minus-circle text-danger"
+                  *ngIf="rowData.isAvailable === 3"
+                ></i>
+              </td>
+              <td class="text-center">
+                {{ rowData.studentName ? rowData.studentName : "-" }}
+              </td>
+              <td class="text-center">
+                <button
+                  class="btn btn-outline-danger btn-sm mb-0 mr-1 border-transparent btn-sm"
+                  (click)="deleteBookItem(rowData.id)"
+                  ngbTooltip="Supprimer"
+                  container="body"
+                  triggers="hover"
+                >
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <form
+    class="form-inline"
+    [formGroup]="formGroup"
+    novalidate
+    (ngSubmit)="insertBookItem()"
+  >
+    <div class="form-group mx-sm-3 mb-2">
+      <input
+        type="number"
+        class="form-control"
+        id="inputCopy"
+        placeholder="Номер"
+        formControlName="BookId"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Ajouter un livre</button>
+  </form>
+</div>

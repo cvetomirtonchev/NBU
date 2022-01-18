@@ -1,0 +1,10 @@
+.loading-overlay {
+    position: absolute;
+    background: rgba(54, 70, 78, 0.48);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 3px;
+    z-index: 1000;
+}

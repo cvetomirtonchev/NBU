@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <h4 class="modal-title">
+        Définir la date de début et la date de fin
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form (ngSubmit)="submitForm()" [formGroup]="formGroup" novalidate>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="BorrowedFrom">Date de debut</label>
+                    <div class="input-group">
+                        <input class="form-control" placeholder="dd.mm.yyyy" name="dpDebut" formControlName="BorrowedTo"
+                            ngbDatepicker #d1="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" (click)="d1.toggle()" type="button">
+                                <i class="fa fa-calendar-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="BorrowedTo">Date de fin</label>
+                    <div class="input-group">
+                        <input class="form-control" placeholder="dd.mm.yyyy" name="dpFin"
+                            formControlName="BorrowedTo" ngbDatepicker #d2="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" (click)="d2.toggle()"
+                                type="button">
+                                <i class="fa fa-calendar-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-outline-success" (click)="submitForm()">Sauvgarder
+    </button>
+</div>

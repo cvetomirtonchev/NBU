@@ -1,0 +1,86 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add a new book</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="submitForm()" [formGroup]="formGroup" novalidate>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="BookTitle">Book title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="BookTitle"
+            placeholder="Book title"
+            formControlName="BookTitle"
+            appFormControlDisable
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="BookId">Book number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="BookId"
+            placeholder="Book number"
+            formControlName="BookId"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="BookId">Cathegory</label>
+          <ng-select
+            name="CategoryId"
+            bindValue="categoryId"
+            bindLabel="categoryName"
+            [items]="categories"
+            formControlName="CategoryId"
+            appFormControlDisable
+          >
+          </ng-select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="Language">Language</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Language"
+            placeholder="Langue"
+            formControlName="Language"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="PublicationYear">Year</label>
+          <input
+            type="text"
+            class="form-control"
+            id="PublicationYear"
+            placeholder="Année"
+            formControlName="PublicationYear"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-outline-success" (click)="submitForm()">Submit</button>
+</div>

@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h4 class="modal-title">Modifier les détails</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="submitForm()" [formGroup]="formGroup" novalidate>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="FacultyNumber">Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FacultyNumber"
+            formControlName="FacultyNumber"
+            name="FacultyNumber"
+            appFormControlDisable
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="PhoneNumber">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="PhoneNumber"
+            formControlName="PhoneNumber"
+            name="PhoneNumber"
+            appFormControlDisable
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10">
+        <div class="form-group">
+          <label for="PhoneNumber">Role</label>
+          <ng-select
+            name="UserType"
+            bindValue="UserType"
+            bindLabel="RoleName"
+            [ngClass]="{ 'is-invalid': f.UserType.invalid }"
+            [items]="roles"
+            formControlName="UserType"
+            required
+          >
+          </ng-select>
+          <div *ngIf="f.UserType.invalid" class="text-danger">
+            Entrez le rôle!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10">
+        <div class="form-group">
+          <label for="StatusName">Status</label>
+          <ng-select
+            name="StatusName"
+            bindValue="Value"
+            bindLabel="StatusName"
+            [items]="statuses"
+            formControlName="IsApproved"
+            appFormControlDisable
+          >
+          </ng-select>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <!-- <div class="row" *ngIf="notValid">
+        <div class="text-danger">All fields are required!</div>
+    </div> -->
+  <button class="btn btn-outline-success" (click)="submitForm()">
+    Sauvegarder
+  </button>
+</div>
